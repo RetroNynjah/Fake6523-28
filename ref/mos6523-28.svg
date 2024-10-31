@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.73890575"
-     inkscape:cx="-37.893872"
-     inkscape:cy="49.397369"
+     inkscape:zoom="1.0449705"
+     inkscape:cx="162.68401"
+     inkscape:cy="393.79101"
      inkscape:window-width="2560"
      inkscape:window-height="1369"
      inkscape:window-x="-8"
@@ -322,7 +322,7 @@
          id="tspan184"
          style="text-align:start;text-anchor:start;stroke-width:0.598806"
          x="150.12154"
-         y="175.17624">RES</tspan></text>
+         y="175.17624">RST</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.23874px;text-align:end;text-anchor:end;display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.618749;stroke-dasharray:none"
@@ -482,7 +482,7 @@
          y="55.288799">DB6</tspan></text>
     <path
        style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.599;stroke-dasharray:none"
-       d="m 163.89458,169.39946 -13.35322,0.0473"
+       d="m 163.49124,169.39946 -12.94937,0.0473"
        id="path199" />
     <path
        style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.599;stroke-dasharray:none"
