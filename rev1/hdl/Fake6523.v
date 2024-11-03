@@ -1,17 +1,17 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineer: 			Per Bengtsson
+// Engineer:        Per Bengtsson
 // 
-// Create Date:    	2024-09-14
-// Module Name:	 	Fake6523
-// Target Devices: 	XC9572XL VQ64
+// Create Date:     2024-11-02
+// Module Name:     Fake6523
+// Target Devices:  XC9572XL VQ64
 //
-// Revision:       	0.1
-// License:        	CC BY-SA 4.0
+// Revision:        0.1
+// License:         CC BY-SA 4.0
 // 
 // Additional Comments: 
 // Fake6523-28 for the 1551 paddle. Not tested in any other application
-//	Based on previous work by Maciej Witkowiak, Jim Brain and Alexander Alexandrov.
+// Based on previous work by Maciej Witkowiak and Jim Brain.
 //
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -22,8 +22,8 @@ module Fake6523(
                 input _cs,
                 inout [7:0]data,
                 inout [7:0]port_a,
-                inout [1:0]port_b,
-                inout [7:6]port_c
+                inout [7:0]port_b,
+                inout [7:0]port_c
 					);
 
 // Fake6523
@@ -50,13 +50,24 @@ assign port_a[7] = ddra[7] ? pra[7] : 1'bz;
 
 assign port_b[0] = ddrb[0] ? prb[0] : 1'bz;
 assign port_b[1] = ddrb[1] ? prb[1] : 1'bz;
+assign port_b[2] = ddrb[2] ? prb[2] : 1'bz;
+assign port_b[3] = ddrb[3] ? prb[3] : 1'bz;
+assign port_b[4] = ddrb[4] ? prb[4] : 1'bz;
+assign port_b[5] = ddrb[5] ? prb[5] : 1'bz;
+assign port_b[6] = ddrb[6] ? prb[6] : 1'bz;
+assign port_b[7] = ddrb[7] ? prb[7] : 1'bz;
 
+assign port_c[0] = ddrc[0] ? prc[0] : 1'bz;
+assign port_c[1] = ddrc[1] ? prc[1] : 1'bz;
+assign port_c[2] = ddrc[2] ? prc[2] : 1'bz;
+assign port_c[3] = ddrc[3] ? prc[3] : 1'bz;
+assign port_c[4] = ddrc[4] ? prc[4] : 1'bz;
+assign port_c[5] = ddrc[5] ? prc[5] : 1'bz;
 assign port_c[6] = ddrc[6] ? prc[6] : 1'bz;
 assign port_c[7] = ddrc[7] ? prc[7] : 1'bz;
 
 wire drive_data_out = !_cs && _write;
 assign data = drive_data_out ? data_out : 8'bz;
-
 
 always @(posedge _cs) begin
    if (!_write) begin
@@ -74,8 +85,14 @@ end
 always @(*) begin
    case (rs)
       0: data_out = port_a;
-      1: begin data_out[1:0] = port_b[1:0]; data_out[7:2] = 0; end
-      2: begin data_out[7:6] = port_c[7:6]; data_out[5:0] = 0; end
+      1: begin
+				data_out[1:0] = port_b[1:0];
+				data_out[7:2] = port_b[7:2] & ddrb[7:2]; // read extra bits if set as outputs
+			end
+      2: begin
+				data_out[7:6] = port_c[7:6];
+				data_out[5:0] = port_c[5:0] & ddrc[5:0]; // read extra bits if set as outputs
+			end
       3: data_out = ddra;
       4: data_out = ddrb;
       5: data_out = ddrc;
