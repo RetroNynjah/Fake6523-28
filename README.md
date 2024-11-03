@@ -16,8 +16,7 @@ Eight bits can be written to them and wile the bits are configured as outputs (1
 When the extra bits are switched to inputs (0) in the DDR register, they most likely start to float. At first, they retain the data that was last written to the port register but after a second or so, the extra bits start to toggle. The behaviour may seem conistent but it only is until it isn't :)
 
 ## Design
-I chose to replicate the output funtionality in this design. The extra bits are normally not used by the 1551 and the drive works fine without that functionality.
-If some third party software like a highly optimized loader would use the extra bits for anything, it feels good to have them for compatibility.
+I chose to replicate the output funtionality with eight bits in all ports in the current version of the HDL. The extra bits are normally not used by the 1551 and the drive works fine without that functionality but if some third party software like a highly optimized loader would use the extra bits for anything, it feels good to have them there for compatibility.
 
 <img src="rev1/images/mos6523-28_rev1_top_3d.png" alt="render" width="600"/>
 
