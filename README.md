@@ -27,7 +27,7 @@ I chose to replicate the output funtionality with eight bits in all ports in thi
 This was a development revision that wasn't released.
 
 ### Rev 3
-<img src="rev3/images/mos6523-28_rev1_top_3d.png" alt="render" width="600"/>
+<img src="rev3/images/fake6523-28_rev3.png" alt="render" width="600"/>
 
 Revision 3 is based on the still active CPLD ATF1504AS (TQFP-44). 
 The ATF1504AS is a 5V part. No voltage regulator is necassary and the Atmel CPLD is cheaper than the Xilinx CPLD so the design is simpler and cheaper than the Xilinx design.
