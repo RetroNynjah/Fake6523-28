@@ -23,6 +23,8 @@ When the extra bits are switched to inputs (0) in the DDR register, they start t
 Revision 1 is based on the obsolete, yet still available CPLD XC9572XL-10VQ64 (VQFP-64).  
 I chose to replicate the output funtionality with eight bits in all ports in this version of the HDL. The extra bits are normally not used by the 1551 and the drive works fine without that functionality but if some third party software like a highly optimized loader would use the extra bits for anything, it feels good to have them there for compatibility.
 
+The firmware for Rev 1 is available in the [rev1/hdl](rev1/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a Xilinx ISE project.
+
 ### Rev 2
 This was a development revision that wasn't released.
 
@@ -33,6 +35,8 @@ Revision 3 is based on the still active CPLD ATF1504AS (TQFP-44).
 The ATF1504AS is a 5V part. No voltage regulator is necassary and the Atmel CPLD is cheaper than the Xilinx CPLD so the design is simpler and cheaper than the Xilinx design.
   
 Beacuse the ATF1504 has less macro cells, the logic had to be simplified. PORTB and PORTC has been limited internally to two bits each and the unconnected extra bits in PORTB and PORTC always return 0's. As stated previously, this normally doesn't affect the functionality of the drive and would only be a problem if someone would use these unconnected registers for something. I'm not aware of any software that does that.
+
+The firmware for Rev 3 is available in the [rev3/hdl](rev3/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a ProChip designer project.
 
 ## Compatibility
 The Fake6523-28 has not gone through any long term testing so **use at your own risk**.  
