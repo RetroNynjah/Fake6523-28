@@ -32,7 +32,7 @@ This was a development revision that wasn't released.
 <img src="rev3/images/fake6523-28_rev3.png" alt="render" width="600"/>
 
 Revision 3 is based on the still active CPLD ATF1504AS (TQFP-44). 
-The ATF1504AS is a 5V part. No voltage regulator is necassary and the Atmel CPLD is cheaper than the Xilinx CPLD so the design is simpler and cheaper than the Xilinx design.
+The ATF1504AS is a 5V part. No voltage regulator is necessary and the Atmel CPLD is cheaper than the Xilinx CPLD so the design is simpler and cheaper than the Xilinx design.
   
 Beacuse the ATF1504 has less macro cells, the logic had to be simplified. PORTB and PORTC has been limited internally to two bits each and the unconnected extra bits in PORTB and PORTC always return 0's. As stated previously, this normally doesn't affect the functionality of the drive and would only be a problem if someone would use these unconnected registers for something. I'm not aware of any software that does that.
 
@@ -48,8 +48,8 @@ Rev 1 has briefly been tested as a 1551 paddle TPI together with:
     * MOS 6525A
     * Fake6523
 * Plus/4 CPUs
-	* 8501R1
-	* Zaxon FGPA
+    * MOS 8501R1
+    * Zaxon FGPA
     * 6510 adapter
     * dmantione 6502
     * Monotech 6502
@@ -60,10 +60,10 @@ Rev 1 has briefly been tested as a 1551 paddle TPI together with:
 * Plus/4 PLA
     * MOS 251641-02
     * PLA16V8
-	* Retroninja CPLD PLA
+    * Retroninja CPLD PLA
 * Paddle PLA
     * Original 251641-03
     * FlashPLA 55/70ns
-	* Retroninja CPLD PLA
+    * Retroninja CPLD PLA
 
-Rev 3 has been tested even less but should work the same.
+Rev 3 has been tested even less but should hopefully work the same.
