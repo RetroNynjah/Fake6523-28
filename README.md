@@ -38,6 +38,11 @@ Beacuse the ATF1504 has less macro cells, the logic had to be simplified. PORTB 
 
 The firmware for Rev 3 is available in the [rev3/hdl](rev3/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a ProChip designer project.
 
+### Rev 4
+After optimization and a complete change of layout, it seems like all eight bits can be enabled on all registers using the ATF1504 after all. 
+New PCB revision coming soon.
+
+
 ## Compatibility
 The Fake6523-28 has not gone through any long term testing so **use at your own risk**.  
 Rev 1 has briefly been tested as a 1551 paddle TPI together with:
