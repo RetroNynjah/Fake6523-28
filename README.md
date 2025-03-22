@@ -5,7 +5,7 @@ This replacement is pretty much a scaled down version of the 40-pin [Fake6523](h
 The verilog code for the CPLD is based on code created by Maciej Witkowiak for the [TCBM2SD](https://github.com/ytmytm/plus4-tcbm2sd).  
 
 ## About the 6523
-<img src="ref/mos6523-28.svg" alt="pinout" width="300"/>
+<img src="ref/mos6523-28.png" alt="pinout" width="340"/>
 
 There is no datasheet available for the 28-pin version of the 6523. I'm guessing it was a modification that was made exclusively for the 1551 to fit in the paddle. They seem to be branded either 6523T or 6523A. 
 It is quite similar to the 40-pin version but instead of three 8-bit ports it only has one 8-bit port (A) and two 2-bit ports (B and C). Some [old instructions](ref/1551-tia.gif) were available that let you replace a 28-pin 6523 with a 40-pin 6523 or 6525 using an adapter. I based my PCB design on those instructions.
@@ -29,35 +29,33 @@ The firmware for Rev 1 is available in the [rev1/hdl](rev1/hdl) folder. There ar
 This was a development revision that wasn't released.
 
 ### Rev 3
-<img src="rev3/images/fake6523-28_rev3.png" alt="render" width="600"/>
-
-Revision 3 is based on the still active CPLD ATF1504AS (TQFP-44). 
-The ATF1504AS is a 5V part. No voltage regulator is necessary and the Atmel CPLD is cheaper than the Xilinx CPLD so the design is simpler and cheaper than the Xilinx design.
-  
-Beacuse the ATF1504 has less macro cells, the logic had to be simplified. PORTB and PORTC has been limited internally to two bits each and the unconnected extra bits in PORTB and PORTC always return 0's. As stated previously, this normally doesn't affect the functionality of the drive and would only be a problem if someone would use these unconnected registers for something. I'm not aware of any software that does that.
-
-The firmware for Rev 3 is available in the [rev3/hdl](rev3/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a ProChip designer project.
+Revision 3 was based on the still active CPLD ATF1504AS (TQFP-44) and PORTB and PORTC was limited internally to two bits each due to space constraints and the unconnected extra bits in PORTB and PORTC always returned 0's. This normally doesn't affect the functionality of the drive and would only be a problem if someone would use these unconnected registers for something. I'm not aware of any software that does that.  
+The ATF1504AS is a 5V part. No voltage regulator is necessary and the Atmel CPLD is cheaper than the Xilinx CPLD so the design is simpler and cheaper than the Xilinx design.  
+The firmware for Rev 3 is available in the [rev3/hdl](rev3/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a ProChip designer project.  
+The rev 3 firmware is only compatible with rev 3 boards.
 
 ### Rev 4
-After optimization and a complete change of layout, it seems like all eight bits can be enabled on all registers using the ATF1504 after all. 
-New PCB revision coming soon.
-
+<img src="rev4/images/fake6523-28_rev4.png" alt="render" width="600"/>
+Revision 4 is based on the same ATF1504AS CPLD as rev 3. The difference compared to rev 3 is that it once again enables all eight bits in all three port registers. This required a new PCB layout.  
+The firmware for Rev 4 is available in the [rev4/hdl](rev4/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a ProChip designer project.  
+The rev 4 firmware is only compatible with rev 4 boards.
 
 ## Compatibility
 The Fake6523-28 has not gone through any long term testing so **use at your own risk**.  
-Rev 1 has briefly been tested as a 1551 paddle TPI together with:
+It has briefly been tested as a 1551 paddle TPI together with:
 * 1551 CPU
     * MOS 6510T
     * Monotech 6502
 * 1551 TPI
     * MOS 6525A
     * Fake6523
-* Plus/4 CPUs
+* Plus/4 CPUs and CPU replacements
     * MOS 8501R1
     * Zaxon FGPA
     * 6510 adapter
-    * dmantione 6502
-    * Monotech 6502
+    * dmantione (6502)
+    * Monotech (6502)
+    * Firecpu7501 (6502)
 * Plus/4 Kernal
     * CBM original
     * 6510 Kernal hack
@@ -70,5 +68,6 @@ Rev 1 has briefly been tested as a 1551 paddle TPI together with:
     * Original 251641-03
     * FlashPLA 55/70ns
     * Retroninja CPLD PLA
+    * Retroninja 16V8 PLA
 
 Rev 3 has been tested even less but should hopefully work the same.
