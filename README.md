@@ -36,6 +36,7 @@ The rev 3 firmware is only compatible with rev 3 boards.
 
 ### Rev 4
 <img src="rev4/images/fake6523-28_rev4.png" alt="render" width="600"/>
+
 Revision 4 is based on the same ATF1504AS CPLD as rev 3. The difference compared to rev 3 is that it once again enables all eight bits in all three port registers. This required a new PCB layout.  
 The firmware for Rev 4 is available in the [rev4/hdl](rev4/hdl) folder. There are compiled files in jed and svf formats and the source code is available as a ProChip designer project.  
 The rev 4 firmware is only compatible with rev 4 boards.
